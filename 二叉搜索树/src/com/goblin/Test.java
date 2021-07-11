@@ -1,9 +1,7 @@
 package com.goblin;
 
-import com.goblin.file.Files;
+import com.goblin.bst.BinarySearchTree1;
 import com.goblin.printer.BinaryTrees;
-
-import java.util.Collections;
 
 /**
  * @author goblin
@@ -34,7 +32,7 @@ public class Test {
     }
 
     static void test1(){
-        BinarySearchTree<Integer> bst = new BinarySearchTree<>();
+        BinarySearchTree1<Integer> bst = new BinarySearchTree1<>();
 
         for (int i = 0; i < 10; i++) {
             bst.add((int) (Math.random()*100));
@@ -51,7 +49,7 @@ public class Test {
                 7, 4, 9, 2, 5, 8, 11, 3, 12, 1
         };
 
-        BinarySearchTree<Integer> bst = new BinarySearchTree<>();
+        BinarySearchTree1<Integer> bst = new BinarySearchTree1<>();
         for (Integer datum : data) {
             bst.add(datum);
         }

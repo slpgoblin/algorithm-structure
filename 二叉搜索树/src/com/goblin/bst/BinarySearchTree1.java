@@ -1,4 +1,4 @@
-package com.goblin;
+package com.goblin.bst;
 
 import com.goblin.printer.BinaryTreeInfo;
 
@@ -14,16 +14,16 @@ import java.util.Queue;
  * @createTime 2021-02-20 10:50
  */
 @SuppressWarnings("ALL")
-public class BinarySearchTree<E> implements BinaryTreeInfo {
+public class BinarySearchTree1<E> implements BinaryTreeInfo {
 
     private int size;
     private Node<E> root;
     private Comparator<E> comparator;
 
-    public BinarySearchTree(Comparator<E> comparator) {
+    public BinarySearchTree1(Comparator<E> comparator) {
         this.comparator = comparator;
     }
-    public BinarySearchTree() {
+    public BinarySearchTree1() {
         this(null);
     }
 
@@ -47,14 +47,15 @@ public class BinarySearchTree<E> implements BinaryTreeInfo {
      * 清空元素
      */
     void clear(){
-
+        root = null;
+        size = 0;
     }
 
     /**
      * 添加元素
      * @param element
      */
-    void add(E element){
+    public void add(E element){
         elementNotNullCheck(element);
         // 添加根节点
         if (root == null){
