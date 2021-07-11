@@ -242,9 +242,6 @@ public class BinarySearchTree<E> implements BinaryTreeInfo {
         remove(node(element));
     }
 
-//    public boolean contains(E element) {
-//        return node(element) != null;
-//    }
 
     /**
      * 获取后继节点
@@ -372,7 +369,7 @@ public class BinarySearchTree<E> implements BinaryTreeInfo {
      * @return
      */
     boolean contains(E element){
-        return false;
+        return (node(element)) != null;
     }
 
     /**
