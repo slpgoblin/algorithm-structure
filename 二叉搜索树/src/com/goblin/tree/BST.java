@@ -31,8 +31,10 @@ public class BST<E> extends BinaryTree<E> {
         elementNotNullCheck(element);
         // 添加根节点
         if (root == null) {
-            root = new Node<>(element, null);
+            root = createNode(element, null);
             size++;
+
+            afterAdd(root);
             return;
         }
         // 添加的不是根节点
@@ -53,12 +55,25 @@ public class BST<E> extends BinaryTree<E> {
                 return;
             }
         }
+        // 判断插入到哪个位置
+        Node<E> newNode = createNode(element, parent);
         if (compare > 0) {
-            parent.right = new Node<>(element, parent);
+            parent.right = newNode;
         } else {
-            parent.left = new Node<>(element, parent);
+            parent.left = newNode;
         }
         size++;
+
+        afterAdd(newNode);
+    }
+
+    /**
+     * 添加node之后的调整
+     *
+     * @param node 新添加的节点
+     */
+    protected void afterAdd(Node<E> node) {
+
     }
 
 
