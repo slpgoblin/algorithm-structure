@@ -16,7 +16,7 @@ public class _10_I_斐波纳契数列 {
      * @return 值
      */
     public int fib(int n) {
-        return 暴力递归(n);
+        return 临时变量(n);
     }
 
 
@@ -24,6 +24,7 @@ public class _10_I_斐波纳契数列 {
      * 暴力递归
      */
     public int 暴力递归(int n) {
+        // base case
         if (n == 0 || n == 1) return n;
 
         n = 暴力递归(n - 1) + 暴力递归(n - 2);
@@ -47,7 +48,7 @@ public class _10_I_斐波纳契数列 {
 
 
     /**
-     * 自底向上
+     * 自底向上 dp数组
      *
      * @param n
      * @return
@@ -55,13 +56,13 @@ public class _10_I_斐波纳契数列 {
     public int dp数组(int n) {
         if (n == 0 || n == 1) return n;
 
-        int[] fibArray = new int[n + 1];
-        fibArray[1] = 1;
+        int[] dpTable = new int[n + 1];
+        dpTable[1] = 1;
 
         for (int i = 2; i <= n; i++) {
-            fibArray[i] = (fibArray[i - 1] + fibArray[i - 2]) % 1000000007;
+            dpTable[i] = (dpTable[i - 1] + dpTable[i - 2]) % 1000000007;
         }
-        return fibArray[n];
+        return dpTable[n];
     }
 
     /**

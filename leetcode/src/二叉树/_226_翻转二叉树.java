@@ -4,11 +4,11 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 /**
+ * https://leetcode-cn.com/problems/invert-binary-tree/
+ *
  * @author goblin
  * @version 1.0.0
- * @className 二叉树._226_翻转二叉树
- * @description https://leetcode-cn.com/problems/invert-binary-tree/
- * @createTime 2021-03-08 14:43
+ * @since 2021-03-08 14:43
  */
 public class _226_翻转二叉树 {
     /*
@@ -67,6 +67,7 @@ public class _226_翻转二叉树 {
 
     /**
      * 层序遍历
+     *
      * @param root
      * @return
      */

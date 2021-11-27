@@ -4,11 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * https://leetcode-cn.com/problems/binary-tree-preorder-traversal/
+ *
  * @author goblin
  * @version 1.0.0
- * @className 二叉树._144_二叉树的前序遍历
- * @description https://leetcode-cn.com/problems/binary-tree-preorder-traversal/
- * @createTime 2021-06-29 22:55
+ * @since 2021-06-29 22:55
  */
 public class _144_二叉树的前序遍历 {
 

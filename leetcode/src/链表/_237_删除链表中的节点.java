@@ -1,10 +1,11 @@
 package 链表;
 
 /**
+ * https://leetcode-cn.com/problems/delete-node-in-a-linked-list/
+ *
  * @author goblin
  * @version 1.0.0
- * @className 链表._237_删除链表中的节点.java
- * @description https://leetcode-cn.com/problems/delete-node-in-a-linked-list/
+ * @since 2021-06-29 22:17
  */
 public class _237_删除链表中的节点 {
 
