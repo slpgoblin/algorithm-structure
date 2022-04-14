@@ -14,66 +14,70 @@ import java.util.Queue;
  * @createTime 2021-02-20 10:50
  */
 @SuppressWarnings("ALL")
-public class BinarySearchTree1<E> implements BinaryTreeInfo {
+public class BinarySearchTree<E> implements BinaryTreeInfo {
 
     private int size;
     private Node<E> root;
     private Comparator<E> comparator;
 
-    public BinarySearchTree1(Comparator<E> comparator) {
+    public BinarySearchTree(Comparator<E> comparator) {
         this.comparator = comparator;
     }
-    public BinarySearchTree1() {
+
+    public BinarySearchTree() {
         this(null);
     }
 
     /**
      * 获取size
+     *
      * @return
      */
-    int size(){
+    int size() {
         return size;
     }
 
     /**
      * 是否为空
+     *
      * @return
      */
-    boolean isEmpty(){
+    boolean isEmpty() {
         return size == 0;
     }
 
     /**
      * 清空元素
      */
-    void clear(){
+    void clear() {
         root = null;
         size = 0;
     }
 
     /**
      * 添加元素
+     *
      * @param element
      */
-    public void add(E element){
+    public void add(E element) {
         elementNotNullCheck(element);
         // 添加根节点
-        if (root == null){
-            root = new Node<>(element,null);
+        if (root == null) {
+            root = new Node<>(element, null);
             size++;
             return;
         }
         // 添加的不是根节点
         // 找到父节点
         Node<E> parent = root;
-        Node<E> node  = root;
+        Node<E> node = root;
         int compare = 0;
-        while (node != null){
+        while (node != null) {
             compare = compare(element, node.element);
             parent = node;
-            if (compare > 0){
+            if (compare > 0) {
                 node = node.right;
-            } else if (compare < 0){
+            } else if (compare < 0) {
                 node = node.left;
             } else {
                 // 相同替换为最新值，防止自定义对象属性不相等
@@ -81,10 +85,10 @@ public class BinarySearchTree1<E> implements BinaryTreeInfo {
                 return;
             }
         }
-        if (compare > 0){
-            parent.right = new Node<>(element,parent);
+        if (compare > 0) {
+            parent.right = new Node<>(element, parent);
         } else {
-            parent.left = new Node<>(element,parent);
+            parent.left = new Node<>(element, parent);
         }
         size++;
     }
@@ -97,13 +101,13 @@ public class BinarySearchTree1<E> implements BinaryTreeInfo {
         if (root == null) return;
         Queue<Node<E>> nodeQueue = new LinkedList<>();
         nodeQueue.offer(root);
-        while (!nodeQueue.isEmpty()){
+        while (!nodeQueue.isEmpty()) {
             Node<E> node = nodeQueue.poll();
             System.out.println(node.element);
-            if (node.left != null){
+            if (node.left != null) {
                 nodeQueue.offer(node.left);
             }
-            if (node.right != null){
+            if (node.right != null) {
                 nodeQueue.offer(node.right);
             }
         }
@@ -115,15 +119,15 @@ public class BinarySearchTree1<E> implements BinaryTreeInfo {
         Queue<Node<E>> nodeQueue = new LinkedList<>();
         nodeQueue.offer(root);
 
-        while (!nodeQueue.isEmpty()){
+        while (!nodeQueue.isEmpty()) {
             Node<E> node = nodeQueue.poll();
             if (visitor.visitor(node.element)) return;
 
-            if (node.left != null){
+            if (node.left != null) {
                 nodeQueue.offer(node.left);
             }
 
-            if (node.right != null){
+            if (node.right != null) {
                 nodeQueue.offer(node.right);
             }
         }
@@ -147,14 +151,14 @@ public class BinarySearchTree1<E> implements BinaryTreeInfo {
      * 中序遍历
      */
     public void inorderTraversal(Visitor visitor) {
-        inorderTraversal(root,visitor);
+        inorderTraversal(root, visitor);
     }
 
-    private void inorderTraversal(Node<E> node,Visitor visitor) {
+    private void inorderTraversal(Node<E> node, Visitor visitor) {
         if (node == null) return;
-        inorderTraversal(node.left,visitor);
+        inorderTraversal(node.left, visitor);
         visitor.visitor(node.element);
-        inorderTraversal(node.right,visitor);
+        inorderTraversal(node.right, visitor);
     }
 
     /**
@@ -173,9 +177,10 @@ public class BinarySearchTree1<E> implements BinaryTreeInfo {
 
     /**
      * 判断是否完全二叉树
+     *
      * @return
      */
-    public boolean isComplete(){
+    public boolean isComplete() {
         if (root == null) {
             return false;
         }
@@ -205,9 +210,10 @@ public class BinarySearchTree1<E> implements BinaryTreeInfo {
 
     /**
      * 层序遍历计算高度
+     *
      * @return
      */
-    public int height(){
+    public int height() {
         if (root == null) return 0;
         // 树的高度
         int height = 0;
@@ -216,14 +222,14 @@ public class BinarySearchTree1<E> implements BinaryTreeInfo {
         Queue<Node<E>> nodeQueue = new LinkedList<>();
         nodeQueue.offer(root);
 
-        while (!nodeQueue.isEmpty()){
+        while (!nodeQueue.isEmpty()) {
             Node<E> node = nodeQueue.poll();
             levelSize--;
-            if (node.left != null){
+            if (node.left != null) {
                 nodeQueue.offer(node.left);
             }
 
-            if (node.right != null){
+            if (node.right != null) {
                 nodeQueue.offer(node.right);
             }
             // 如果等于零意味着即将访问下一层
@@ -237,6 +243,7 @@ public class BinarySearchTree1<E> implements BinaryTreeInfo {
 
     /**
      * 删除元素
+     *
      * @param element
      */
     public void remove(E element) {
@@ -246,6 +253,7 @@ public class BinarySearchTree1<E> implements BinaryTreeInfo {
 
     /**
      * 获取后继节点
+     *
      * @param node 当前节点
      * @return 后继节点
      */
@@ -271,6 +279,7 @@ public class BinarySearchTree1<E> implements BinaryTreeInfo {
 
     /**
      * 删除节点
+     *
      * @param node
      */
     private void remove(Node<E> node) {
@@ -321,6 +330,7 @@ public class BinarySearchTree1<E> implements BinaryTreeInfo {
 
     /**
      * 根据元素查找节点
+     *
      * @param element
      * @return
      */
@@ -340,51 +350,56 @@ public class BinarySearchTree1<E> implements BinaryTreeInfo {
 
     /**
      * 递归计算高度
+     *
      * @return
      */
-    public int height2(){
+    public int height2() {
         return height(root);
     }
 
     private int height(Node<E> node) {
         if (node == null) return 0;
-        return 1 + Math.max(height(node.left),height(node.right));
+        return 1 + Math.max(height(node.left), height(node.right));
     }
 
     /**
      * 比较元素大小
+     *
      * @param e1
      * @param e2
      * @return 0 代表e1和e2相等。大于0代表e1大于e2，小于0代表e1小于e2
      */
-    private int compare(E e1, E e2){
-        if (comparator != null){
+    private int compare(E e1, E e2) {
+        if (comparator != null) {
             return comparator.compare(e1, e2);
         }
-        return ((Comparable<E>)e1).compareTo(e2);
+        return ((Comparable<E>) e1).compareTo(e2);
     }
 
     /**
      * 是否包含元素
+     *
      * @param element
      * @return
      */
-    boolean contains(E element){
+    boolean contains(E element) {
         return (node(element)) != null;
     }
 
     /**
      * 空节点检测
+     *
      * @param element
      */
     private void elementNotNullCheck(E element) {
-        if (element == null){
+        if (element == null) {
             throw new IllegalArgumentException("element must not be null ");
         }
     }
 
     /**
      * 获取前驱节点
+     *
      * @param node
      * @return
      */
@@ -418,19 +433,19 @@ public class BinarySearchTree1<E> implements BinaryTreeInfo {
 
     @Override
     public Object left(Object node) {
-        return ((Node<E>)node).left;
+        return ((Node<E>) node).left;
     }
 
     @Override
     public Object right(Object node) {
-        return ((Node<E>)node).right;
+        return ((Node<E>) node).right;
     }
 
     @Override
     public Object string(Object node) {
-        Node<E> myNode = (Node<E>)node;
+        Node<E> myNode = (Node<E>) node;
         String parentString = "null";
-        if(myNode.parent != null){
+        if (myNode.parent != null) {
             parentString = myNode.parent.element.toString();
         }
         return myNode.element + "_P(" + parentString + ")";
@@ -439,7 +454,6 @@ public class BinarySearchTree1<E> implements BinaryTreeInfo {
 
     public static interface Visitor<E> {
         /**
-         *
          * @param element
          * @return true 停止遍历
          */

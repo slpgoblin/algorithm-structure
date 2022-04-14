@@ -1,7 +1,8 @@
 package com.goblin;
 
-import com.goblin.bst.BinarySearchTree1;
+import com.goblin.bst.BinarySearchTree;
 import com.goblin.printer.BinaryTrees;
+import com.goblin.tree.AVLTree;
 
 /**
  * @author goblin
@@ -28,14 +29,14 @@ public class Test {
 ////        });
 //        System.out.println(bst.height());
 //        System.out.println(bst.isComplete());
-        test7();
+        test8();
     }
 
-    static void test1(){
-        BinarySearchTree1<Integer> bst = new BinarySearchTree1<>();
+    static void test1() {
+        BinarySearchTree<Integer> bst = new BinarySearchTree<>();
 
         for (int i = 0; i < 10; i++) {
-            bst.add((int) (Math.random()*100));
+            bst.add((int) (Math.random() * 100));
         }
 //        BinaryTrees.println(bst);
 //        String s = BinaryTrees.printString(bst);
@@ -45,11 +46,11 @@ public class Test {
     }
 
     static void test7() {
-        Integer[] data = new Integer[] {
+        Integer[] data = new Integer[]{
                 7, 4, 9, 2, 5, 8, 11, 3, 12, 1
         };
 
-        BinarySearchTree1<Integer> bst = new BinarySearchTree1<>();
+        BinarySearchTree<Integer> bst = new BinarySearchTree<>();
         for (Integer datum : data) {
             bst.add(datum);
         }
@@ -60,5 +61,19 @@ public class Test {
 
         BinaryTrees.println(bst);
     }
-    
+
+    static void test8() {
+        Integer[] data = new Integer[]{
+                76, 94, 25, 1, 67, 27, 44, 18, 77, 23, 97, 13, 53, 9, 32, 11, 55, 19, 24
+        };
+
+        AVLTree<Integer> avlTree = new AVLTree<>();
+        for (Integer datum : data) {
+            avlTree.add(datum);
+        }
+
+        BinaryTrees.println(avlTree);
+
+    }
+
 }
