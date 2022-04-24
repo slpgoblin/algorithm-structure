@@ -3,11 +3,14 @@ package com.goblin.tree;
 import java.util.Comparator;
 
 /**
+ * 二叉搜索树
+ * <p>
+ * binary search tree
+ * </P>
+ *
  * @author goblin
  * @version 1.0.0
- * @className com.goblin.BinaryTree
- * @description 二叉搜索树
- * @createTime 2021-02-20 10:50
+ * @since 2021-02-20 10:50
  */
 @SuppressWarnings("ALL")
 public class BST<E> extends BinaryTree<E> {
